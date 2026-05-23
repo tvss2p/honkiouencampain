@@ -603,9 +603,32 @@
   .page2-footer-badge .big { font-size: 22px; }
 
   /* Print */
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
   @media print {
-    body { background: white; padding: 0; gap: 0; }
-    .page { box-shadow: none; page-break-after: always; }
+    html, body {
+      width: 210mm;
+      margin: 0;
+      padding: 0;
+      background: white;
+      gap: 0;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      min-height: unset;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+    }
+    .page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
   }
 </style>
 </head>
